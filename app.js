@@ -14,9 +14,9 @@
 const adoptionApp = {};
 adoptionApp.apiKey = 'PjoCn4l5'
 
-adoptionApp.url = new URL('https://api.rescuegroups.org/v5/public/animals/search/cats/')
 
-adoptionApp.getData = () => {
+adoptionApp.getData = (choice) => {
+    adoptionApp.url = new URL(`https://api.rescuegroups.org/v5/public/animals/search/${choice}/`)
     fetch(adoptionApp.url, {
         headers: {
             'Authorization': adoptionApp.apiKey
@@ -28,21 +28,14 @@ adoptionApp.getData = () => {
 
         })
 
-
-
 }
 
 adoptionApp.display = (dataFromApi) => {
     const ul = document.querySelector('.data-display');
-    // console.log(typeof (dataFromAPI))
+    ul.innerHTML = "";
     dataFromApi.forEach((res) => {
         const li = document.createElement('li')
         ul.appendChild(li);
-
-
-        // console.log(res.attributes.name);
-        // console.log(res.attributes.descriptionText);
-        // console.log(res.attributes.pictureThumbnailUrl)
         const picture = res.attributes.pictureThumbnailUrl;
         const name = res.attributes.name
         const description = res.attributes.descriptionText
@@ -58,10 +51,19 @@ adoptionApp.display = (dataFromApi) => {
 
 }
 
+adoptionApp.userSelection = () => {
+    const button = document.querySelector('form');
+    button.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const userAnimalChoice = e.target.animalList.value;
+        adoptionApp.getData(userAnimalChoice);
+    })
+    
+};
 
 
 adoptionApp.init = () => {
-    adoptionApp.getData();
+    adoptionApp.userSelection();
 };
 
 
