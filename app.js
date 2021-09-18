@@ -7,4 +7,4 @@
 // Add event listener to auto scroll to next animal profile once like button has been pushed
 // save user like data in favourites section
 
-const app = {};
+con
