@@ -7,4 +7,10 @@
 
 // Add like button to animal profiles
 // Add event listener to auto scroll to next animal profile once like button has been pushed
+<<<<<<< HEAD
 // save user like data in favourites section.
+=======
+// save user like data in favourites section
+
+const app = {};
+>>>>>>> f97f3fd1c7713dee351530fb2bfe76ab6d6c11a8
