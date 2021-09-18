@@ -10,4 +10,26 @@
 // save user like data in favourites section.
 // save user like data in favourites section
 
-const app = {};
+const adoptionApp = {};
+
+
+const url = new URL('https://api.rescuegroups.org/v5/public/animals/species/')
+
+fetch(url, {
+    method: 'GET',
+    headers: {
+        Authorization: 'PjoCn4l5',
+    },
+    body: JSON.stringify(),
+})
+    .then(res => res.json())
+    .then((data) => {
+        console.log(data);
+    });
+
+adoptionApp.init = () => {
+    console.log('this is working');
+};
+
+
+adoptionApp.init();
