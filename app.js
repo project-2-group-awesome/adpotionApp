@@ -13,11 +13,55 @@
 
 const adoptionApp = {};
 adoptionApp.apiKey = 'PjoCn4l5'
+adoptionApp.animalTypes = ['alpacas',
+    'birds',
+    'cats',
+    'chickens',
+    'chinchillas',
+    'cows',
+    'degus',
+    'dogs',
+    'donkeys',
+    'ducks',
+    'ferrets',
+    'fish',
+    'frogs',
+    'geckos',
+    'geese',
+    'gerbils',
+    'goats',
+    'guineapigs',
+    'hamsters',
+    'hedgehogs',
+    'horses',
+    'iguanas',
+    'lizards',
+    'llama',
+    'mice',
+    'pigs',
+    'ponies',
+    'rabbits',
+    'rats',
+    'sheep',
+    'skunks',
+    'snakes',
+    'tortoises',
+    'turkeys',
+    'turtles'];
 
+adoptionApp.userOptions = (array) => {
+    const animalList = document.querySelector('#animalList');
+
+    array.forEach((item) => {
+        animalList.innerHTML += `
+            <option value="${item}">${item}</option>
+        `
+    })
+}
 
 adoptionApp.getData = (choice) => {
-    adoptionApp.url = new URL(`https://api.rescuegroups.org/v5/public/animals/search/${choice}/`)
-    fetch(adoptionApp.url, {
+    const url = new URL(`https://api.rescuegroups.org/v5/public/animals/search/${choice}/`)
+    fetch(url, {
         headers: {
             'Authorization': adoptionApp.apiKey
         }
@@ -58,12 +102,14 @@ adoptionApp.userSelection = () => {
         const userAnimalChoice = e.target.animalList.value;
         adoptionApp.getData(userAnimalChoice);
     })
-    
+
 };
 
 
 adoptionApp.init = () => {
+    adoptionApp.userOptions(adoptionApp.animalTypes);
     adoptionApp.userSelection();
+
 };
 
 
