@@ -28,7 +28,7 @@
             list-style: none;
             display: flex;
 
-            overflow: hidden;
+            /* overflow: hidden; */
             flex-direction: column;
             align-items: center;
             height: 465px;
@@ -79,41 +79,22 @@
         </header>
         <main>
             <section class="wrapper">
-                <form action="#">
+                <form action="#" method="GET" class="animalList" name="animalList">
                     <label for="animalList">What kind</label>
                     <select name="animalList" id="animalList">
-                        <option value="">Dog</option>  <!-- going to take this value to get the image?-->
-                        <option value="">Cat</option>
-                        <option value="">ETC...</option>
+                        <option value="dogs">Dog</option>  <!-- going to take this value to get the image?-->
+                        <option value="cats">Cat</option>
+                        <option value="frogs">Frog</option>
+                        <option value="mice">Mice</option>
                     </select>
-                    <button>Submit</button>
+
+                    <input type="submit">
+                    <!-- <button type="submit" form="animalList" id="animalList" class="submit">Submit</button> -->
                 </form>
             </section>
             <section class="wrapper">
-                <ul>
-                    <li>
-                        <div class="card">    <!-- Do we need this part?-->
-                            <div class="img-container">
-                                slide1 (image)  <!-- Image-size -->
-                                <span class="emoji">❤️</span>   <!-- when we click the image -->
-                                
-                            </div>
-                            <h2>Name</h2>
-                            <h3>Bio</h3>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="img-container">slide2</div>
-                    </li>
-                    <li>
-                        <div class="img-container">slide3</div>
-                    </li>
-                    <li>
-                        <div class="img-container">slide4</div>
-                    </li>
-                    <li>
-                        <div class="img-container">slide5</div>
-                    </li>
+                <ul class="data-display">
+                    
                 </ul>
             </section>
     
