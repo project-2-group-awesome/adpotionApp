@@ -13,12 +13,12 @@
 const adoptionApp = {};
 
 
-const url = new URL('https://api.rescuegroups.org/v5/public/animals/species/')
+adoptionApp.url = new URL('https://api.rescuegroups.org/v5/public/animals/search/dogs/')
 
-fetch(url, {
+fetch(adoptionApp.url, {
     method: 'GET',
     headers: {
-        Authorization: 'PjoCn4l5',
+        'Authorization': 'PjoCn4l5',
     },
     body: JSON.stringify(),
 })
