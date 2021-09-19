@@ -114,6 +114,15 @@ adoptionApp.display = (dataFromApi) => {
                 <p>${description}</p>
             </div>
         `
+        if (description !== undefined && picture !== undefined) {
+            li.innerHTML = `
+                <div>
+                    <img src="${picture}"/>
+                    <h2>${name}</h2>
+                    <p>${description}</p>
+                </div>
+            `
+        }
     });
 
 
