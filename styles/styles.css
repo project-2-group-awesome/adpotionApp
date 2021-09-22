@@ -290,7 +290,7 @@ h1 {
 }
 
 h2 {
-  font-size: 1rem;
+  font-size: 1.2rem;
 }
 
 form {
@@ -311,6 +311,7 @@ header {
   background-image: url(../assets/best-friend-cat.jpg);
   background-size: cover;
   background-position-y: -150px;
+  background-attachment: fixed;
 }
 
 .header-container {
@@ -329,23 +330,31 @@ header {
           align-items: center;
 }
 
-.title {
-  margin-bottom: 100px;
-}
-
 h1 {
   text-align: center;
   margin: 0;
+  color: #242323;
+  text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;
 }
 
 h2 {
+  color: #242323;
   text-align: center;
+  text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;
+}
+
+.line {
+  border-radius: 1.5px;
+  height: 3px;
+  width: 100%;
+  background-color: rgba(36, 35, 35, 0.6);
+  margin: 20px 0 80px;
 }
 
 form {
   border-radius: 20px;
   padding: 25px;
-  background-color: #242323;
+  background-color: rgba(36, 35, 35, 0.8);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
