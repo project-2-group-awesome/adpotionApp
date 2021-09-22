@@ -1,23 +1,47 @@
+
+
 header {
     height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url(../assets/best-friend-cat.jpg);
+    background-size: cover;
+    background-position-y: -150px;
+}
+
+.header-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
+.title {
+    margin-bottom: 100px;
+}
 
 h1 {
     text-align: center;
     margin: 0;
 }
 
+h2 {
+    text-align: center;
+}
+
 form {
+    border-radius: 20px;
+    padding: 25px;
+    background-color: rgb(36, 35, 35);
     display: flex;
     justify-content: center;
 }
 label {
-    margin-right: 10px;
+    color: #fff;
+    margin-right: 15px;
 }
 
-
+input {
+    margin-left: 15px;
+}
