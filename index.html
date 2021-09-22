@@ -6,89 +6,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adoption App</title>
     <link rel="stylesheet" href="./styles/styles.css">
-    <style>
-        * {
-            margin:0;
-            padding: 0;
-        }
-
-        .container {
-            border: 1px solid blue;
-            width: 50%;
-            margin: 0 auto;
-            height: 100vh;
-        }
-        h1 {
-            text-align: center;
-            font-size: 100px;
-        }
-
-        ul {
-            margin-top: 230px;
-            list-style: none;
-            display: flex;
-
-            /* overflow: hidden; */
-            flex-direction: column;
-            align-items: center;
-            height: 465px;
-            border: 1px solid yellowgreen;
-        }
-        form {
-            display: flex;
-            justify-content: center;
-        }
-        label {
-            margin-right: 10px;
-        }
-        .wrapper {
-            max-width: 1200px;
-            width: 80%;
-            margin: 0 auto;
-        }
-
-        .card {
-            border: 1px solid red;
-            text-align: center;;
-        }
-        .img-container{
-            width: 400px;
-            height: 400px;
-            background-color: gray;
-            margin: 5px;
-            position: relative;
-        }
-        .emoji {
-            position: absolute;
-            z-index: 10;
-            right: -10px;
-            top: -5px;
-        }
-
-        button{
-            margin-left: 10px;
-        }
-
-        
-    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Rubik+Beastly&display=swap" rel="stylesheet"> 
 </head>
 <body>
     <div class="container">
         <header class="wrapper">
-            <h1>Title</h1>   
-        </header>
-        <main>
+            <h1>Best Friend Finder</h1>
+            <h2>The adoption app to find your perfect pet</h2>   
             <section class="wrapper">
                 <form action="#" method="GET" class="animalList" name="animalList">
-                    <label for="animalList">What kind</label>
+                    <label for="animalList">Pick a new Friend</label>
                     <select name="animalList" id="animalList">
                         
                     </select>
-
+    
                     <input type="submit">
                     <!-- <button type="submit" form="animalList" id="animalList" class="submit">Submit</button> -->
                 </form>
             </section>
+        </header>
+        <main>
             <section class="wrapper">
                 <ul class="data-display">
                     
