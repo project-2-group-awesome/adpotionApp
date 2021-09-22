@@ -280,6 +280,11 @@ html {
   margin: 0 auto;
 }
 
+img {
+  max-width: 100%;
+  height: auto;
+}
+
 html {
   font-size: 125%;
   font-family: "Montserrat", sans-serif;
@@ -324,19 +329,91 @@ label {
   margin-right: 10px;
 }
 
-ul {
-  margin-top: 230px;
+.data-display {
   list-style: none;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  /* overflow: hidden; */
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  /* overflow: hidden; */
+}
+.data-display li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  height: 465px;
+}
+.data-display .card-container {
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  z-index: 1;
+}
+.data-display .card {
+  width: 500px;
+  height: 500px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0 5rem;
+  border-radius: 15px;
+  -webkit-box-shadow: 20px 20px 50px black;
+          box-shadow: 20px 20px 50px black;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+.data-display .card .img-container {
+  margin-top: 1rem;
+}
+.data-display .card .description {
+  height: 50vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.data-display .card .description h3 {
+  margin: 1rem 0;
+  display: inline-block;
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+  border-bottom: 1px solid green;
+}
+.data-display .card .description p {
+  overflow: scroll;
+}
+.data-display img {
+  width: 200px;
+  height: 200px;
 }
