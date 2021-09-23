@@ -60,12 +60,10 @@ adoptionApp.getAnimalsName = () => {
         .then((apiInfo) => {
             const animalList = document.querySelector('#animalList');
             let species = "";
-            // console.log(data.attributes.singular)
             apiInfo.data.forEach((data) => {
                 species += `<option value="${data.attributes.plural}">${data.attributes.plural}</option>`
             })
             animalList.innerHTML = species.toLowerCase();
-            // console.log(species);
 
         })
 
@@ -92,16 +90,24 @@ adoptionApp.getData = (choice) => {
     })
         .then(res => res.json())
         .then((apiInfo) => {
+            console.log(apiInfo.data);
             adoptionApp.display(apiInfo.data);
+
+            const picutres = apiInfo.included.filter((res) => {
+                console.log(res.attributes.large);
+            })
         })
 };
 
 // display the data from the api call to the browser
+
+
+
+
 adoptionApp.display = (dataFromApi) => {
     const ul = document.querySelector('.data-display');
     ul.innerHTML = "";
     dataFromApi.forEach((res) => {
-        console.log(res.attributes.descriptionText);
         const li = document.createElement('li')
         ul.appendChild(li);
         const picture = res.attributes.pictureThumbnailUrl;
@@ -117,7 +123,10 @@ adoptionApp.display = (dataFromApi) => {
                         </div>
                         <div class="description">
                             <h3>${name}</h3>
-                            <p>${description}</p>
+                        </div>
+                        <div class="btn-container">
+                            <button>More Info</button>
+                            <button>Like</button>
                         </div>
                     </div>
                 </div>
@@ -133,7 +142,7 @@ adoptionApp.userSelection = () => {
     const form = document.querySelector('form');
     form.addEventListener('submit', (e) => {
         e.preventDefault();
-        console.log(e);
+
         const userAnimalChoice = e.target.animalList.value;
         adoptionApp.getData(userAnimalChoice);
     })
