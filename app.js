@@ -88,22 +88,43 @@ adoptionApp.getData = (choice) => {
     })
         .then(res => res.json())
         .then((apiInfo) => {
-            console.log(apiInfo.data);
-            adoptionApp.display(apiInfo.data);
 
-            const picutres = apiInfo.included.filter((res) => {
-                console.log(res.attributes.large);
+
+            const included = apiInfo.included;
+            // console.log(included);
+
+            const images = apiInfo.included.filter((res) => {
+                return res.attributes.large;
+                // console.log(res.attributes.large);
             })
+            // console.log(images);
+            adoptionApp.display(apiInfo.data, images);
+
+
+
+            // const pictures = apiInfo.data.filter(data => data.relationships.pictures !== undefined);
+            // const picsId = pictures.map(res => res.relationships.pictures.data[0].id);
+
+
+            // console.log(picsId);
+
+
         })
 
 }
 
 
 
-adoptionApp.display = (dataFromApi) => {
+adoptionApp.display = (dataFromApi, image) => {
+    // console.log(image);
+    // const havePic = dataFromApi.filter(data => data.relationships.pictures !== undefined);
+    // const pics = havePic.map()
+
+
     const ul = document.querySelector('.data-display');
     ul.innerHTML = "";
     dataFromApi.forEach((res) => {
+
         const li = document.createElement('li')
         ul.appendChild(li);
         const picture = res.attributes.pictureThumbnailUrl;
@@ -111,6 +132,10 @@ adoptionApp.display = (dataFromApi) => {
         const description = res.attributes.descriptionText
 
         if (description !== undefined && picture !== undefined) {
+            // const pics = image.map((data) => {
+            //     console.log(data)
+            // })
+
             li.innerHTML = `
                 <div class="card-container">
                     <div class="card">
