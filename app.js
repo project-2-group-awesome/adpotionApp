@@ -120,10 +120,12 @@ adoptionApp.display = (dataFromApi, image) => {
     // const havePic = dataFromApi.filter(data => data.relationships.pictures !== undefined);
     // const pics = havePic.map()
 
+    const havePic = dataFromApi.filter(data => data.relationships.pictures !== undefined);
 
     const ul = document.querySelector('.data-display');
     ul.innerHTML = "";
-    dataFromApi.forEach((res) => {
+    havePic.forEach((res) => {
+        // console.log(res.relationships.pictures.data[0].id)
 
         const li = document.createElement('li')
         ul.appendChild(li);
@@ -132,15 +134,17 @@ adoptionApp.display = (dataFromApi, image) => {
         const description = res.attributes.descriptionText
 
         if (description !== undefined && picture !== undefined) {
-            // const pics = image.map((data) => {
-            //     console.log(data)
-            // })
+
+            const pics = image.filter(data => data.id === res.relationships.pictures.data[0].id)
+                .map(data => data.attributes.large.url);
+
+
 
             li.innerHTML = `
                 <div class="card-container">
                     <div class="card">
                         <div class="img-container">
-                            <img src="${picture}" alt=""/>
+                            <img src="${pics}" alt=""/>
                         </div>
                         <div class="description">
                             <h3>${name}</h3>
