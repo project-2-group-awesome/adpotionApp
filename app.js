@@ -89,7 +89,7 @@ adoptionApp.getData = (choice) => {
     })
         .then(res => res.json())
         .then((apiInfo) => {
-            // console.log(apiInfo);
+            console.log(apiInfo);
             const images = apiInfo.included.filter((res) => {
                 return res.attributes.large;
             })
@@ -137,14 +137,17 @@ adoptionApp.display = (dataFromApi, image) => {
                             <h3>${name}</h3>
                         </div>
                         <div class="btn-container">
-                            <button>More Info</button>
+                            <button id="big">More Info</button>
                             <button>Like</button>
                         </div>
                     </div>
+                    <p class="hidden">${description}</p>
                 </div>
             `
         }
     });
+
+    adoptionApp.moreBtn();
 
 
 }
@@ -159,6 +162,21 @@ adoptionApp.userSelection = () => {
     })
 
 };
+
+adoptionApp.moreBtn = () => {
+    const ulElement = document.querySelector('ul');
+    const largeButton = document.querySelector('#big')
+    const description = document.querySelector('p');
+
+
+
+    ulElement.addEventListener('click', (e) => {
+
+        if (e.target.id === "big") {
+            description.classList.toggle('hidden');
+        }
+    })
+}
 
 
 adoptionApp.init = () => {
