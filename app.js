@@ -171,6 +171,7 @@ adoptionApp.userInteraction = ()=> {
     })
 }
 
+
 // our init for page load
 adoptionApp.init = () => {
     adoptionApp.getAnimalsName();
