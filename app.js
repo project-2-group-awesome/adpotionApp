@@ -68,7 +68,7 @@ adoptionApp.getAnimalsName = () => {
 
         })
 
-}
+};
 
 // adoptionApp.userOptions = (array) => {
 //     const animalList = document.querySelector('#animalList');
@@ -79,6 +79,8 @@ adoptionApp.getAnimalsName = () => {
 //         `
 //     })
 // }
+
+// Get data from our Api call
 
 adoptionApp.getData = (choice) => {
     const url = new URL(`https://api.rescuegroups.org/v5/public/animals/search/${choice}/`)
@@ -98,8 +100,10 @@ adoptionApp.getData = (choice) => {
 
 
         })
+};
 
-}
+// display the data from the api call to the browser
+
 
 
 
@@ -115,29 +119,22 @@ adoptionApp.display = (dataFromApi, image) => {
     havePic.forEach((res) => {
         // console.log(res.relationships.pictures.data[0].id)
 
-        const li = document.createElement('li')
-        ul.appendChild(li);
         const name = res.attributes.name
         const description = res.attributes.descriptionText
 
         if (description !== undefined) {
+            const li = document.createElement('li')
+            ul.appendChild(li);
 
             const pics = image.filter(data => data.id === res.relationships.pictures.data[0].id)
                 .map(data => data.attributes.large.url);
-
-
-
             li.innerHTML = `
-                <div class="card-container">
-                    <div class="card">
-                        <div class="img-container">
-                            <img src="${pics}" alt=""/>
-                        </div>
-                        <div class="description">
-                            <h3>${name}</h3>
-                        </div>
+                <div class="card">
+                    <div class="small">
+                        <img src="${pics}" alt=""/>
+                        <h3>${name}</h3>
                         <div class="btn-container">
-                            <button id="big">More Info</button>
+                            <button id="large">More Info</button>
                             <button>Like</button>
                         </div>
                     </div>
@@ -147,11 +144,11 @@ adoptionApp.display = (dataFromApi, image) => {
         }
     });
 
-    adoptionApp.moreBtn();
+    adoptionApp.userInteraction();
 
+};
 
-}
-
+// take the user selection and change the search peramiter for the api call for the specific animal chosen.
 adoptionApp.userSelection = () => {
     const form = document.querySelector('form');
     form.addEventListener('submit', (e) => {
@@ -160,31 +157,27 @@ adoptionApp.userSelection = () => {
         const userAnimalChoice = e.target.animalList.value;
         adoptionApp.getData(userAnimalChoice);
     })
-
 };
 
-adoptionApp.moreBtn = () => {
-    const ulElement = document.querySelector('ul');
-    const largeButton = document.querySelector('#big')
-    const description = document.querySelector('p');
+adoptionApp.userInteraction = () => {
+    const ulElement = document.querySelector('ul')
+    const largeButton = document.querySelector('#large')
+    const description = document.querySelector('p')
 
-
-
-    ulElement.addEventListener('click', (e) => {
-
-        if (e.target.id === "big") {
-            description.classList.toggle('hidden');
+    ulElement.addEventListener('click', function (e) {
+        if (e.target.id === 'large') {
+            description.classList.toggle('hidden')
         }
     })
 }
 
 
+// our init for page load
 adoptionApp.init = () => {
     adoptionApp.getAnimalsName();
     // adoptionApp.userOptions(adoptionApp.animalTypes);
     adoptionApp.userSelection();
 
 };
-
 
 adoptionApp.init();
