@@ -160,10 +160,14 @@ adoptionApp.userSelection = () => {
 };
 
 adoptionApp.userInteraction = ()=> {
-    const infoButton = document.querySelector('#large')
+    const ulElement = document.querySelector('ul')
+    const largeButton = document.querySelector('#large')
+    const description = document.querySelector('p')
 
-    infoButton.addEventListener('click', function(e) {
-        console.log(this);
+    ulElement.addEventListener('click', function(e) {
+        if (e.target.id === 'large') {
+            description.classList.toggle('hidden')
+        }
     })
 }
 
