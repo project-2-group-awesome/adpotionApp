@@ -275,8 +275,8 @@ html {
 }
 
 .wrapper {
-  max-width: 1200px;
-  width: 80%;
+  max-width: 1400px;
+  width: 90%;
   margin: 0 auto;
 }
 
@@ -377,15 +377,21 @@ input {
   margin-left: 15px;
 }
 
+main {
+  background-color: white;
+  padding: 2rem;
+}
+
 .data-display {
   list-style: none;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   /* overflow: hidden; */
 }
 .data-display li {
@@ -404,17 +410,20 @@ input {
           align-items: center;
 }
 .data-display .card-container {
-  height: 100vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
   z-index: 1;
 }
 .data-display .card {
-  width: 500px;
+  margin-top: 2rem;
+  width: 300px;
   height: 500px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -423,23 +432,28 @@ input {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 0 5rem;
+  padding: 0 2rem;
+  margin-right: 1rem;
   border-radius: 15px;
-  -webkit-box-shadow: 20px 20px 50px black;
-          box-shadow: 20px 20px 50px black;
+  -webkit-box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.7);
+          box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.7);
   background-color: rgba(255, 255, 255, 0.3);
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+.data-display .card:hover, .data-display .card:focus {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
 }
 .data-display .card .img-container {
   margin-top: 1rem;
 }
 .data-display .card .description {
-  height: 50vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -459,9 +473,25 @@ input {
   border-bottom: 1px solid green;
 }
 .data-display .card .description p {
-  overflow: scroll;
+  overflow: hidden;
+}
+.data-display .card .btn-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  width: 100%;
+}
+.data-display .card button {
+  border-style: none;
+  border-radius: 50px;
+  padding: 0.5rem 1rem;
+  background-color: skyblue;
+  cursor: pointer;
 }
 .data-display img {
-  width: 200px;
-  height: 200px;
+  width: 7.5rem;
+  height: 7.5rem;
+  border-radius: 50%;
 }
