@@ -50,7 +50,8 @@ adoptionApp.apiKey = 'PjoCn4l5'
 //     'turtles'];
 
 adoptionApp.getAnimalsName = () => {
-    const url = new URL(`https://api.rescuegroups.org/v5/public/animals/species/`)
+    const url = new URL(`https://api.rescuegroups.org/v5/public/animals/species/`);
+
     fetch(url, {
         headers: {
             'Authorization': adoptionApp.apiKey
@@ -88,34 +89,49 @@ adoptionApp.getData = (choice) => {
     })
         .then(res => res.json())
         .then((apiInfo) => {
-            console.log(apiInfo.data);
-            adoptionApp.display(apiInfo.data);
-
-            const picutres = apiInfo.included.filter((res) => {
-                console.log(res.attributes.large);
+            // console.log(apiInfo);
+            const images = apiInfo.included.filter((res) => {
+                return res.attributes.large;
             })
+
+            adoptionApp.display(apiInfo.data, images);
+
+
         })
 
 }
 
 
 
-adoptionApp.display = (dataFromApi) => {
+adoptionApp.display = (dataFromApi, image) => {
+    // console.log(image);
+    // const havePic = dataFromApi.filter(data => data.relationships.pictures !== undefined);
+    // const pics = havePic.map()
+
+    const havePic = dataFromApi.filter(data => data.relationships.pictures !== undefined);
+
     const ul = document.querySelector('.data-display');
     ul.innerHTML = "";
-    dataFromApi.forEach((res) => {
+    havePic.forEach((res) => {
+        // console.log(res.relationships.pictures.data[0].id)
+
         const li = document.createElement('li')
         ul.appendChild(li);
-        const picture = res.attributes.pictureThumbnailUrl;
         const name = res.attributes.name
         const description = res.attributes.descriptionText
 
-        if (description !== undefined && picture !== undefined) {
+        if (description !== undefined) {
+
+            const pics = image.filter(data => data.id === res.relationships.pictures.data[0].id)
+                .map(data => data.attributes.large.url);
+
+
+
             li.innerHTML = `
                 <div class="card-container">
                     <div class="card">
                         <div class="img-container">
-                            <img src="${picture}" alt=""/>
+                            <img src="${pics}" alt=""/>
                         </div>
                         <div class="description">
                             <h3>${name}</h3>
