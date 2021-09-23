@@ -69,7 +69,7 @@ adoptionApp.getAnimalsName = () => {
 
         })
 
-}
+};
 
 // adoptionApp.userOptions = (array) => {
 //     const animalList = document.querySelector('#animalList');
@@ -81,6 +81,8 @@ adoptionApp.getAnimalsName = () => {
 //     })
 // }
 
+// Get data from our Api call
+
 adoptionApp.getData = (choice) => {
     const url = new URL(`https://api.rescuegroups.org/v5/public/animals/search/${choice}/`)
     fetch(url, {
@@ -91,11 +93,10 @@ adoptionApp.getData = (choice) => {
         .then(res => res.json())
         .then((apiInfo) => {
             adoptionApp.display(apiInfo.data);
-
         })
+};
 
-}
-
+// display the data from the api call to the browser
 adoptionApp.display = (dataFromApi) => {
     const ul = document.querySelector('.data-display');
     ul.innerHTML = "";
@@ -110,7 +111,7 @@ adoptionApp.display = (dataFromApi) => {
         if (description !== undefined && picture !== undefined) {
             li.innerHTML = `
                 <div class="card-container">
-                    <div class="card">
+                    <div class="card full-card">
                         <div class="img-container">
                             <img src="${picture}" alt=""/>
                         </div>
@@ -125,8 +126,9 @@ adoptionApp.display = (dataFromApi) => {
     });
 
 
-}
+};
 
+// take the user selection and change the search peramiter for the api call for the specific animal chosen.
 adoptionApp.userSelection = () => {
     const form = document.querySelector('form');
     form.addEventListener('submit', (e) => {
@@ -138,7 +140,16 @@ adoptionApp.userSelection = () => {
 
 };
 
+// user hover over cards to revile more info
+adoptionApp.userInteraction = () => {
+    const card = document.querySelector('.card');
 
+    card.addEventListener('mouseOver', () => {
+
+    })
+}
+
+// our init for page load
 adoptionApp.init = () => {
     adoptionApp.getAnimalsName();
     // adoptionApp.userOptions(adoptionApp.animalTypes);
