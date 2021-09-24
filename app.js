@@ -117,10 +117,11 @@ adoptionApp.display = (dataFromApi, image) => {
 
     ul.innerHTML = "";
     havePic.forEach((res) => {
-        // console.log(res.relationships.pictures.data[0].id)
+        console.log(res)
         const animalId = res.id;
         const name = res.attributes.name
         const description = res.attributes.descriptionText
+        const exitId = res.attributes.slug
         const li = document.createElement('li')
         ul.appendChild(li);
         
@@ -135,14 +136,15 @@ adoptionApp.display = (dataFromApi, image) => {
                         <h3>${name}</h3>
                         <div class="btn-container">
                             <button id="${name}">More Info</button>
-                            <button>Like</button>
+                            <button id="${animalId}123">Like</button>
+                            <button class="hidden exit" id="${exitId}">x</button>
                         </div>
                     </div>
                     <p class="hidden" id="${animalId}">${description}</p>
                 </div>
             `
         }
-        adoptionApp.userInteraction(name, animalId);
+        adoptionApp.userInteraction(name, animalId, exitId);
     });
     
 
@@ -159,17 +161,31 @@ adoptionApp.userSelection = () => {
     })
 };
 
-adoptionApp.userInteraction = (name, tag)=> {
-    // const largeButton = document.querySelectorAll('#large')
-    // const li = document.querySelector('.card')
+adoptionApp.userInteraction = (name, tag, exit)=> {
     
     ul.addEventListener('click', function(e) {
         console.log(e.target.id);
-        const buttonName = name;
-        if (e.target.id === buttonName) {
-            const description = document.getElementById(tag)
-            description.classList.toggle('hidden')
-            console.log(description);
+        const infoButton = document.getElementById(name);
+        const description = document.getElementById(tag);
+        const exitButton = document.getElementById(exit);
+        console.log(name);
+        if (e.target.id === name) {
+            description.classList.remove('hidden')
+            exitButton.classList.remove('hidden')
+            infoButton.classList.add('hidden')
+        }if (e.target.id === exit) {
+            description.classList.add('hidden')
+            exitButton.classList.add('hidden')
+            infoButton.classList.remove('hidden')
+        }if (e.target.id === `${tag}123`) {
+            const likeButton = document.getElementById(`${tag}123`)
+            if (likeButton.innerText === 'Like') {
+                likeButton.innerText = 'Liked'
+                likeButton.classList.add('liked')
+            } else {
+                likeButton.innerText = 'Like'
+                likeButton.classList.remove('liked')
+            }
         }
     })
 }
