@@ -65,7 +65,6 @@ adoptionApp.getAnimalsName = () => {
                 species += `<option value="${data.attributes.plural}">${data.attributes.plural}</option>`
             })
             animalList.innerHTML = species.toLowerCase();
-
         })
 
 };
