@@ -303,7 +303,7 @@ form {
 }
 
 header {
-  height: 100vh;
+  height: calc(100vh - 43px);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -379,7 +379,6 @@ input {
 
 main {
   background-color: white;
-  padding: 2rem;
 }
 
 .data-display {
@@ -506,4 +505,25 @@ p {
 
 .hidden {
   display: none;
+}
+
+footer {
+  background-color: #242323;
+  margin: 0;
+  padding: 10px 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+footer a {
+  text-decoration: none;
+  color: white;
+}
+footer p {
+  color: white;
+  margin: 0;
+  text-align: center;
 }
