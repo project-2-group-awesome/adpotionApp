@@ -106,6 +106,7 @@ adoptionApp.getData = (choice) => {
 
 
 
+const ul = document.querySelector('.data-display');
 
 adoptionApp.display = (dataFromApi, image) => {
     // console.log(image);
@@ -114,17 +115,16 @@ adoptionApp.display = (dataFromApi, image) => {
 
     const havePic = dataFromApi.filter(data => data.relationships.pictures !== undefined);
 
-    const ul = document.querySelector('.data-display');
     ul.innerHTML = "";
     havePic.forEach((res) => {
         // console.log(res.relationships.pictures.data[0].id)
-
+        const animalId = res.id;
         const name = res.attributes.name
         const description = res.attributes.descriptionText
+        const li = document.createElement('li')
+        ul.appendChild(li);
         
         if (description !== undefined) {
-            const li = document.createElement('li')
-            ul.appendChild(li);
 
             const pics = image.filter(data => data.id === res.relationships.pictures.data[0].id)
                 .map(data => data.attributes.large.url);
@@ -134,17 +134,17 @@ adoptionApp.display = (dataFromApi, image) => {
                         <img src="${pics}" alt=""/>
                         <h3>${name}</h3>
                         <div class="btn-container">
-                            <button id="large">More Info</button>
+                            <button id="${name}">More Info</button>
                             <button>Like</button>
                         </div>
                     </div>
-                    <p class="hidden">${description}</p>
+                    <p class="hidden" id="${animalId}">${description}</p>
                 </div>
             `
         }
+        adoptionApp.userInteraction(name, animalId);
     });
     
-    adoptionApp.userInteraction();
 
 };
 
@@ -159,14 +159,17 @@ adoptionApp.userSelection = () => {
     })
 };
 
-adoptionApp.userInteraction = ()=> {
-    const ulElement = document.querySelector('ul')
-    const largeButton = document.querySelector('#large')
-    const description = document.querySelector('p')
-
-    ulElement.addEventListener('click', function(e) {
-        if (e.target.id === 'large') {
+adoptionApp.userInteraction = (name, tag)=> {
+    // const largeButton = document.querySelectorAll('#large')
+    // const li = document.querySelector('.card')
+    
+    ul.addEventListener('click', function(e) {
+        console.log(e.target.id);
+        const buttonName = name;
+        if (e.target.id === buttonName) {
+            const description = document.getElementById(tag)
             description.classList.toggle('hidden')
+            console.log(description);
         }
     })
 }
