@@ -59,6 +59,7 @@ button {
   padding: 0.5rem 1rem;
   background-color: skyblue;
   cursor: pointer;
+  margin: 10px;
 }
 
 img {
@@ -89,6 +90,9 @@ p {
   }
 }
 
+.liked {
+  background-color: goldenrod;
+}
 
 .hidden {
   display: none;

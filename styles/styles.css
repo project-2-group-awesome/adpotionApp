@@ -469,6 +469,7 @@ button {
   padding: 0.5rem 1rem;
   background-color: skyblue;
   cursor: pointer;
+  margin: 10px;
 }
 
 img {
@@ -497,6 +498,10 @@ p {
 }
 .exit:hover {
   background-color: crimson;
+}
+
+.liked {
+  background-color: goldenrod;
 }
 
 .hidden {
