@@ -104,10 +104,6 @@ adoptionApp.getData = (choice) => {
 
 
 
-<<<<<<< HEAD
-adoptionApp.ul = document.querySelector('.data-display');
-=======
->>>>>>> 891fe470961e4764a8abb43e6f692c5805920c8a
 
 adoptionApp.display = (dataFromApi, image) => {
     // console.log(image);
@@ -127,11 +123,6 @@ adoptionApp.display = (dataFromApi, image) => {
         const exitId = res.attributes.slug
         const li = document.createElement('li')
         adoptionApp.ul.appendChild(li);
-<<<<<<< HEAD
-        
-=======
-
->>>>>>> 891fe470961e4764a8abb43e6f692c5805920c8a
         if (description !== undefined) {
 
             const pics = image.filter(data => data.id === res.relationships.pictures.data[0].id)
@@ -172,17 +163,10 @@ adoptionApp.userSelection = () => {
 
 };
 
-<<<<<<< HEAD
-adoptionApp.userInteraction = (name, tag, exit)=> {
-    
-    adoptionApp.ul.addEventListener('click', function(e) {
-        console.log(e.target.id);
-=======
 adoptionApp.userInteraction = (name, tag, exit) => {
 
     adoptionApp.ul.addEventListener('click', function (e) {
         // console.log(e.target.id);
->>>>>>> 891fe470961e4764a8abb43e6f692c5805920c8a
         const infoButton = document.getElementById(name);
         const description = document.getElementById(tag);
         const exitButton = document.getElementById(exit);
@@ -191,23 +175,12 @@ adoptionApp.userInteraction = (name, tag, exit) => {
             description.classList.remove('hidden')
             exitButton.classList.remove('hidden')
             infoButton.classList.add('hidden')
-<<<<<<< HEAD
-            exitButton.scrollIntoView({behavior: "smooth", block: "start"});
-        }
-        if (e.target.id === exit) {
-            description.classList.add('hidden')
-            exitButton.classList.add('hidden')
-            infoButton.classList.remove('hidden')
-        }
-        if (e.target.id === `${tag}123`) {
-=======
             exitButton.scrollIntoView({ behavior: "smooth", block: "start" });
         } if (e.target.id === exit) {
             description.classList.add('hidden')
             exitButton.classList.add('hidden')
             infoButton.classList.remove('hidden')
         } if (e.target.id === `${tag}123`) {
->>>>>>> 891fe470961e4764a8abb43e6f692c5805920c8a
             const likeButton = document.getElementById(`${tag}123`)
             if (likeButton.innerText === 'Like') {
                 likeButton.innerText = 'Liked'
