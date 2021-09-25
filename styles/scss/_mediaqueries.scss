@@ -1,0 +1,33 @@
+@media(max-width: 950px) {
+    .card {
+        flex-direction: column;
+
+        p {
+            margin: 0;
+            width: 100%;
+        }
+    }
+}
+
+@media(max-width: 530px) {
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    h2 {
+        font-size: 1;
+    }
+
+    form {
+        flex-direction: column;
+        align-items: center;
+        
+        input {
+            margin: 0;
+        }
+    }
+
+    footer p {
+        font-size: 0.5rem;
+    }
+}

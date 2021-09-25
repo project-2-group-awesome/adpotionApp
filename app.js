@@ -118,7 +118,7 @@ adoptionApp.display = (dataFromApi, image) => {
     mainElement.scrollIntoView({ behavior: "smooth" });
 };
 
-// take the user selection and change the search peramiter for the api call for the specific animal chosen.
+// take the user selection and change the search paramiter for the api call for the specific animal chosen.
 adoptionApp.userSelection = () => {
     const form = document.querySelector('form');
     form.addEventListener('submit', e => {
