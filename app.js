@@ -129,6 +129,14 @@ adoptionApp.userSelection = () => {
 
 };
 
+// user hover over cards to revile more info
+adoptionApp.userInteraction = () => {
+    const card = document.querySelector('.card');
+
+    card.addEventListener('mouseOver', () => {
+
+    })
+}
 
 // Function for all user interaction with buttons. 
 adoptionApp.userInteraction = (name, tag, exit) => {
