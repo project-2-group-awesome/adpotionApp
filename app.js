@@ -48,7 +48,7 @@ adoptionApp.apiKey = 'PjoCn4l5'
 //     'tortoises',
 //     'turkeys',
 //     'turtles'];
-adoptionApp.ul = document.querySelector('.data-display');   // ??????
+adoptionApp.ul = document.querySelector('.data-display'); 
 
 adoptionApp.getAnimalsName = () => {
     const url = new URL(`https://api.rescuegroups.org/v5/public/animals/species/`);
