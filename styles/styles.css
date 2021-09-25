@@ -408,6 +408,9 @@ li {
       -ms-flex-align: center;
           align-items: center;
 }
+li:last-child {
+  margin-bottom: 2rem;
+}
 
 .card {
   margin-top: 2rem;
@@ -505,6 +508,16 @@ p {
 
 .hidden {
   display: none;
+}
+
+.no-data {
+  margin-top: 2rem;
+  font-size: 1.5rem;
+  padding: 0 3rem;
+  text-align: center;
+}
+.no-data p {
+  margin: 0;
 }
 
 footer {
