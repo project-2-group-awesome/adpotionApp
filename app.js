@@ -48,6 +48,7 @@ adoptionApp.apiKey = 'PjoCn4l5'
 //     'tortoises',
 //     'turkeys',
 //     'turtles'];
+adoptionApp.ul = document.querySelector('.data-display');   // ??????
 
 adoptionApp.getAnimalsName = () => {
     const url = new URL(`https://api.rescuegroups.org/v5/public/animals/species/`);
@@ -66,8 +67,6 @@ adoptionApp.getAnimalsName = () => {
             })
             animalList.innerHTML = species.toLowerCase();
         })
-
-
 
 };
 
@@ -105,7 +104,6 @@ adoptionApp.getData = (choice) => {
 
 
 
-const ul = document.querySelector('.data-display');   // ??????
 
 adoptionApp.display = (dataFromApi, image) => {
     // console.log(image);
@@ -116,7 +114,7 @@ adoptionApp.display = (dataFromApi, image) => {
 
     const havePic = dataFromApi.filter(data => data.relationships.pictures !== undefined);
 
-    ul.innerHTML = "";
+    adoptionApp.ul.innerHTML = "";
     havePic.forEach((res) => {
         console.log(res)
         const animalId = res.id;
@@ -124,7 +122,7 @@ adoptionApp.display = (dataFromApi, image) => {
         const description = res.attributes.descriptionText
         const exitId = res.attributes.slug
         const li = document.createElement('li')
-        ul.appendChild(li);
+        adoptionApp.ul.appendChild(li);
 
         if (description !== undefined) {
 
@@ -147,7 +145,7 @@ adoptionApp.display = (dataFromApi, image) => {
         }
         adoptionApp.userInteraction(name, animalId, exitId);
     });
-    mainElement.scrollIntoView();
+    mainElement.scrollIntoView({ behavior: "smooth" });
 
 
 };
@@ -168,7 +166,7 @@ adoptionApp.userSelection = () => {
 
 adoptionApp.userInteraction = (name, tag, exit) => {
 
-    ul.addEventListener('click', function (e) {
+    adoptionApp.ul.addEventListener('click', function (e) {
         // console.log(e.target.id);
         const infoButton = document.getElementById(name);
         const description = document.getElementById(tag);
@@ -178,6 +176,7 @@ adoptionApp.userInteraction = (name, tag, exit) => {
             description.classList.remove('hidden')
             exitButton.classList.remove('hidden')
             infoButton.classList.add('hidden')
+            exitButton.scrollIntoView({ behavior: "smooth", block: "start" });
         } if (e.target.id === exit) {
             description.classList.add('hidden')
             exitButton.classList.add('hidden')
@@ -198,8 +197,8 @@ adoptionApp.userInteraction = (name, tag, exit) => {
 
 // our init for page load
 adoptionApp.init = () => {
-    adoptionApp.getAnimalsName();
     // adoptionApp.userOptions(adoptionApp.animalTypes);
+    adoptionApp.getAnimalsName();
     adoptionApp.userSelection();
 
 
