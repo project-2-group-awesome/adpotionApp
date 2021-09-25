@@ -65,7 +65,6 @@ adoptionApp.getAnimalsName = () => {
                 species += `<option value="${data.attributes.plural}">${data.attributes.plural}</option>`
             })
             animalList.innerHTML = species.toLowerCase();
-
         })
 
 };
@@ -106,6 +105,7 @@ adoptionApp.getData = (choice) => {
 
 
 
+const ul = document.querySelector('.data-display');
 
 adoptionApp.display = (dataFromApi, image) => {
     // console.log(image);
@@ -114,17 +114,21 @@ adoptionApp.display = (dataFromApi, image) => {
 
     const havePic = dataFromApi.filter(data => data.relationships.pictures !== undefined);
 
-    const ul = document.querySelector('.data-display');
     ul.innerHTML = "";
     havePic.forEach((res) => {
-        // console.log(res.relationships.pictures.data[0].id)
-
+        console.log(res)
+        const animalId = res.id;
         const name = res.attributes.name
         const description = res.attributes.descriptionText
+<<<<<<< HEAD
 
+=======
+        const exitId = res.attributes.slug
+        const li = document.createElement('li')
+        ul.appendChild(li);
+        
+>>>>>>> 7f751fe411d1dc41c9aaeda78b0daaaa70a660a4
         if (description !== undefined) {
-            const li = document.createElement('li')
-            ul.appendChild(li);
 
             const pics = image.filter(data => data.id === res.relationships.pictures.data[0].id)
                 .map(data => data.attributes.large.url);
@@ -134,17 +138,23 @@ adoptionApp.display = (dataFromApi, image) => {
                         <img src="${pics}" alt=""/>
                         <h3>${name}</h3>
                         <div class="btn-container">
-                            <button id="large">More Info</button>
-                            <button>Like</button>
+                            <button id="${name}">More Info</button>
+                            <button id="${animalId}123">Like</button>
+                            <button class="hidden exit" id="${exitId}">x</button>
                         </div>
                     </div>
-                    <p class="hidden">${description}</p>
+                    <p class="hidden" id="${animalId}">${description}</p>
                 </div>
             `
         }
+        adoptionApp.userInteraction(name, animalId, exitId);
     });
+<<<<<<< HEAD
 
     adoptionApp.userInteraction();
+=======
+    
+>>>>>>> 7f751fe411d1dc41c9aaeda78b0daaaa70a660a4
 
 };
 
@@ -159,6 +169,7 @@ adoptionApp.userSelection = () => {
     })
 };
 
+<<<<<<< HEAD
 adoptionApp.userInteraction = () => {
     const ulElement = document.querySelector('ul')
     const largeButton = document.querySelector('#large')
@@ -167,6 +178,33 @@ adoptionApp.userInteraction = () => {
     ulElement.addEventListener('click', function (e) {
         if (e.target.id === 'large') {
             description.classList.toggle('hidden')
+=======
+adoptionApp.userInteraction = (name, tag, exit)=> {
+    
+    ul.addEventListener('click', function(e) {
+        console.log(e.target.id);
+        const infoButton = document.getElementById(name);
+        const description = document.getElementById(tag);
+        const exitButton = document.getElementById(exit);
+        console.log(name);
+        if (e.target.id === name) {
+            description.classList.remove('hidden')
+            exitButton.classList.remove('hidden')
+            infoButton.classList.add('hidden')
+        }if (e.target.id === exit) {
+            description.classList.add('hidden')
+            exitButton.classList.add('hidden')
+            infoButton.classList.remove('hidden')
+        }if (e.target.id === `${tag}123`) {
+            const likeButton = document.getElementById(`${tag}123`)
+            if (likeButton.innerText === 'Like') {
+                likeButton.innerText = 'Liked'
+                likeButton.classList.add('liked')
+            } else {
+                likeButton.innerText = 'Like'
+                likeButton.classList.remove('liked')
+            }
+>>>>>>> 7f751fe411d1dc41c9aaeda78b0daaaa70a660a4
         }
     })
 }
