@@ -105,7 +105,7 @@ adoptionApp.getData = (choice) => {
 
 
 
-const ul = document.querySelector('.data-display');
+adoptionApp.ul = document.querySelector('.data-display');
 
 adoptionApp.display = (dataFromApi, image) => {
     // console.log(image);
@@ -114,7 +114,7 @@ adoptionApp.display = (dataFromApi, image) => {
 
     const havePic = dataFromApi.filter(data => data.relationships.pictures !== undefined);
 
-    ul.innerHTML = "";
+    adoptionApp.ul.innerHTML = "";
     havePic.forEach((res) => {
         console.log(res)
         const animalId = res.id;
@@ -122,7 +122,7 @@ adoptionApp.display = (dataFromApi, image) => {
         const description = res.attributes.descriptionText
         const exitId = res.attributes.slug
         const li = document.createElement('li')
-        ul.appendChild(li);
+        adoptionApp.ul.appendChild(li);
         
         if (description !== undefined) {
 
@@ -149,7 +149,7 @@ adoptionApp.display = (dataFromApi, image) => {
 
 };
 
-// take the user selection and change the search peramiter for the api call for the specific animal chosen.
+// take the user selection and change the search paramiter for the api call for the specific animal chosen.
 adoptionApp.userSelection = () => {
     const form = document.querySelector('form');
     form.addEventListener('submit', (e) => {
@@ -162,21 +162,24 @@ adoptionApp.userSelection = () => {
 
 adoptionApp.userInteraction = (name, tag, exit)=> {
     
-    ul.addEventListener('click', function(e) {
+    adoptionApp.ul.addEventListener('click', function(e) {
         console.log(e.target.id);
         const infoButton = document.getElementById(name);
         const description = document.getElementById(tag);
         const exitButton = document.getElementById(exit);
-        console.log(name);
+        // console.log(name);
         if (e.target.id === name) {
             description.classList.remove('hidden')
             exitButton.classList.remove('hidden')
             infoButton.classList.add('hidden')
-        }if (e.target.id === exit) {
+            exitButton.scrollIntoView({behavior: "smooth", block: "start"});
+        }
+        if (e.target.id === exit) {
             description.classList.add('hidden')
             exitButton.classList.add('hidden')
             infoButton.classList.remove('hidden')
-        }if (e.target.id === `${tag}123`) {
+        }
+        if (e.target.id === `${tag}123`) {
             const likeButton = document.getElementById(`${tag}123`)
             if (likeButton.innerText === 'Like') {
                 likeButton.innerText = 'Liked'
