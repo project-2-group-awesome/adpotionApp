@@ -48,6 +48,7 @@ adoptionApp.apiKey = 'PjoCn4l5'
 //     'tortoises',
 //     'turkeys',
 //     'turtles'];
+
 adoptionApp.ul = document.querySelector('.data-display');   // ??????
 
 adoptionApp.getAnimalsName = () => {
@@ -72,10 +73,12 @@ adoptionApp.getAnimalsName = () => {
 
 // adoptionApp.userOptions = (array) => {
 //     const animalList = document.querySelector('#animalList');
+//     const capitalize = word => word[0].toUpperCase() + word.substring(1).toLowerCase();
 
 //     array.forEach((item) => {
+//         // console.log(typeof (item))
 //         animalList.innerHTML += `
-//             <option value="${item}">${item}</option>
+//             <option value="${item}">${capitalize(item)}</option>
 //         `
 //     })
 // }
@@ -89,8 +92,11 @@ adoptionApp.getData = (choice) => {
             'Authorization': adoptionApp.apiKey
         }
     })
-        .then(res => res.json())
+        .then(res => res.ok ? res.json() : new Error("error"))
         .then((apiInfo) => {
+            // if (apiInfo.meta.count === 0) {
+            //     adoptionApp.errorHandler();
+            // }
             // console.log(apiInfo);
             const animalInfo = apiInfo.data;
             const images = apiInfo.included.filter((res) => {
@@ -102,7 +108,17 @@ adoptionApp.getData = (choice) => {
 
 // display the data from the api call to the browser
 
+adoptionApp.errorHandler = () => {
+    adoptionApp.ul.innerHTML = "";
+    const li = document.createElement('li');
+    const p = document.createElement('p');
 
+    p.innerText = 'no data';
+
+    li.appendChild(p);
+    adoptionApp.ul.appendChild(li);
+
+}
 
 
 adoptionApp.display = (dataFromApi, image) => {
@@ -116,7 +132,7 @@ adoptionApp.display = (dataFromApi, image) => {
 
     adoptionApp.ul.innerHTML = "";
     havePic.forEach((res) => {
-        console.log(res)
+        // console.log(res)
         const animalId = res.id;
         const name = res.attributes.name
         const description = res.attributes.descriptionText
