@@ -553,6 +553,10 @@ footer p {
     margin: 0;
     width: 100%;
   }
+
+  .no-data p {
+    width: 100%;
+  }
 }
 @media (max-width: 530px) {
   h1 {
@@ -574,6 +578,10 @@ footer p {
   }
   form input {
     margin: 0;
+  }
+
+  .no-data p {
+    font-size: 1rem;
   }
 
   footer p {
