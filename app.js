@@ -67,6 +67,8 @@ adoptionApp.getAnimalsName = () => {
             animalList.innerHTML = species.toLowerCase();
         })
 
+
+
 };
 
 // adoptionApp.userOptions = (array) => {
@@ -90,14 +92,12 @@ adoptionApp.getData = (choice) => {
     })
         .then(res => res.json())
         .then((apiInfo) => {
-            console.log(apiInfo);
+            // console.log(apiInfo);
+            const animalInfo = apiInfo.data;
             const images = apiInfo.included.filter((res) => {
                 return res.attributes.large;
             })
-
-            adoptionApp.display(apiInfo.data, images);
-
-
+            adoptionApp.display(animalInfo, images);
         })
 };
 
@@ -105,12 +105,14 @@ adoptionApp.getData = (choice) => {
 
 
 
-const ul = document.querySelector('.data-display');
+const ul = document.querySelector('.data-display');   // ??????
 
 adoptionApp.display = (dataFromApi, image) => {
     // console.log(image);
     // const havePic = dataFromApi.filter(data => data.relationships.pictures !== undefined);
     // const pics = havePic.map()
+    const mainElement = document.querySelector('#main');
+
 
     const havePic = dataFromApi.filter(data => data.relationships.pictures !== undefined);
 
@@ -145,6 +147,7 @@ adoptionApp.display = (dataFromApi, image) => {
         }
         adoptionApp.userInteraction(name, animalId, exitId);
     });
+    mainElement.scrollIntoView();
 
 
 };
@@ -152,22 +155,25 @@ adoptionApp.display = (dataFromApi, image) => {
 // take the user selection and change the search peramiter for the api call for the specific animal chosen.
 adoptionApp.userSelection = () => {
     const form = document.querySelector('form');
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
 
+    form.addEventListener('submit', (e) => {
+
+        e.preventDefault();
         const userAnimalChoice = e.target.animalList.value;
-        adoptionApp.getData(userAnimalChoice);
+        adoptionApp.getData(userAnimalChoice)
+
     })
+
 };
 
 adoptionApp.userInteraction = (name, tag, exit) => {
 
     ul.addEventListener('click', function (e) {
-        console.log(e.target.id);
+        // console.log(e.target.id);
         const infoButton = document.getElementById(name);
         const description = document.getElementById(tag);
         const exitButton = document.getElementById(exit);
-        console.log(name);
+        // console.log(name);
         if (e.target.id === name) {
             description.classList.remove('hidden')
             exitButton.classList.remove('hidden')
@@ -195,6 +201,7 @@ adoptionApp.init = () => {
     adoptionApp.getAnimalsName();
     // adoptionApp.userOptions(adoptionApp.animalTypes);
     adoptionApp.userSelection();
+
 
 };
 
