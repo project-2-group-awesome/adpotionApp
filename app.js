@@ -48,6 +48,7 @@ adoptionApp.apiKey = 'PjoCn4l5'
 //     'tortoises',
 //     'turkeys',
 //     'turtles'];
+adoptionApp.ul = document.querySelector('.data-display');   // ??????
 
 adoptionApp.getAnimalsName = () => {
     const url = new URL(`https://api.rescuegroups.org/v5/public/animals/species/`);
@@ -91,13 +92,11 @@ adoptionApp.getData = (choice) => {
         .then(res => res.json())
         .then((apiInfo) => {
             // console.log(apiInfo);
+            const animalInfo = apiInfo.data;
             const images = apiInfo.included.filter((res) => {
                 return res.attributes.large;
             })
-
-            adoptionApp.display(apiInfo.data, images);
-
-
+            adoptionApp.display(animalInfo, images);
         })
 };
 
@@ -105,12 +104,17 @@ adoptionApp.getData = (choice) => {
 
 
 
+<<<<<<< HEAD
 adoptionApp.ul = document.querySelector('.data-display');
+=======
+>>>>>>> 891fe470961e4764a8abb43e6f692c5805920c8a
 
 adoptionApp.display = (dataFromApi, image) => {
     // console.log(image);
     // const havePic = dataFromApi.filter(data => data.relationships.pictures !== undefined);
     // const pics = havePic.map()
+    const mainElement = document.querySelector('#main');
+
 
     const havePic = dataFromApi.filter(data => data.relationships.pictures !== undefined);
 
@@ -123,7 +127,11 @@ adoptionApp.display = (dataFromApi, image) => {
         const exitId = res.attributes.slug
         const li = document.createElement('li')
         adoptionApp.ul.appendChild(li);
+<<<<<<< HEAD
         
+=======
+
+>>>>>>> 891fe470961e4764a8abb43e6f692c5805920c8a
         if (description !== undefined) {
 
             const pics = image.filter(data => data.id === res.relationships.pictures.data[0].id)
@@ -145,25 +153,36 @@ adoptionApp.display = (dataFromApi, image) => {
         }
         adoptionApp.userInteraction(name, animalId, exitId);
     });
-    
+    mainElement.scrollIntoView({ behavior: "smooth" });
+
 
 };
 
 // take the user selection and change the search paramiter for the api call for the specific animal chosen.
 adoptionApp.userSelection = () => {
     const form = document.querySelector('form');
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
 
+    form.addEventListener('submit', (e) => {
+
+        e.preventDefault();
         const userAnimalChoice = e.target.animalList.value;
-        adoptionApp.getData(userAnimalChoice);
+        adoptionApp.getData(userAnimalChoice)
+
     })
+
 };
 
+<<<<<<< HEAD
 adoptionApp.userInteraction = (name, tag, exit)=> {
     
     adoptionApp.ul.addEventListener('click', function(e) {
         console.log(e.target.id);
+=======
+adoptionApp.userInteraction = (name, tag, exit) => {
+
+    adoptionApp.ul.addEventListener('click', function (e) {
+        // console.log(e.target.id);
+>>>>>>> 891fe470961e4764a8abb43e6f692c5805920c8a
         const infoButton = document.getElementById(name);
         const description = document.getElementById(tag);
         const exitButton = document.getElementById(exit);
@@ -172,6 +191,7 @@ adoptionApp.userInteraction = (name, tag, exit)=> {
             description.classList.remove('hidden')
             exitButton.classList.remove('hidden')
             infoButton.classList.add('hidden')
+<<<<<<< HEAD
             exitButton.scrollIntoView({behavior: "smooth", block: "start"});
         }
         if (e.target.id === exit) {
@@ -180,6 +200,14 @@ adoptionApp.userInteraction = (name, tag, exit)=> {
             infoButton.classList.remove('hidden')
         }
         if (e.target.id === `${tag}123`) {
+=======
+            exitButton.scrollIntoView({ behavior: "smooth", block: "start" });
+        } if (e.target.id === exit) {
+            description.classList.add('hidden')
+            exitButton.classList.add('hidden')
+            infoButton.classList.remove('hidden')
+        } if (e.target.id === `${tag}123`) {
+>>>>>>> 891fe470961e4764a8abb43e6f692c5805920c8a
             const likeButton = document.getElementById(`${tag}123`)
             if (likeButton.innerText === 'Like') {
                 likeButton.innerText = 'Liked'
@@ -195,9 +223,10 @@ adoptionApp.userInteraction = (name, tag, exit)=> {
 
 // our init for page load
 adoptionApp.init = () => {
-    adoptionApp.getAnimalsName();
     // adoptionApp.userOptions(adoptionApp.animalTypes);
+    adoptionApp.getAnimalsName();
     adoptionApp.userSelection();
+
 
 };
 
