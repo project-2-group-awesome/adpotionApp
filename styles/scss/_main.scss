@@ -1,91 +1,112 @@
 main {
   background-color: white;
-  padding: 2rem;
 }
 
 .data-display {
   list-style: none;
   display: flex;
-  justify-content: center;
   flex-wrap: wrap;
+  justify-content: center;
+}
 
-  /* overflow: hidden; */
-  //   height: 465px;
-  // border: 1px solid yellowgreen;
+li {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
-  li {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  &:last-child {
+    margin-bottom: 2rem;
   }
-  .card-container {
-    // height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1;
+}
+
+.card {
+  margin: 2rem 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 2rem;
+  margin-right: 1rem;
+  border-radius: 15px;
+  box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.7);
+  background-color: rgba(255, 255, 255, 0.3);
+  position: relative;
+  transition: all 0.3s;
+
+  &:hover,
+  &:focus {
+    transform: scale(1.05);
   }
-  .card {
-    margin-top: 2rem;
-    width: 300px;
-    height: 500px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    padding: 0 2rem;
-    margin-right: 1rem;
-    // border: 1px solid red;
-    border-radius: 15px;
-    box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.7);
-    background-color: rgba(255, 255, 255, 0.3);
-    transition: all 0.3s;
+}
+.small {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-    &:hover,
-    &:focus {
-      transform: scale(1.1);
-    }
+h3 {
+  margin: 1rem 0;
+  text-align: center;
+  border-bottom: 1px solid green;
+}
 
-    .img-container {
-      margin-top: 1rem;
-    }
+.btn-container {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+button {
+  border-style: none;
+  border-radius: 50px;
+  padding: 0.5rem 1rem;
+  background-color: skyblue;
+  cursor: pointer;
+  margin: 10px;
+}
 
-    .description {
-      // height: 50vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+img {
+  width: 7.5rem;
+  height: 7.5rem;
+  border-radius: 50%;
+}
 
-      h3 {
-        margin: 1rem 0;
-        display: inline-block;
-        align-self: flex-start;
-        border-bottom: 1px solid green;
-      }
+p {
+  margin-left: 50px;
+  width: calc(100% - 250px);
+}
 
-      p {
-        overflow: hidden;
-      }
-    }
+.exit {
+  text-align: center;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 0;
+  width: 1.2rem;
+  height: 1.2rem;
+  border-radius: 1rem;
+  opacity: 0.7;
+  transition: 0.3s;
 
-    .btn-container {
-      display: flex;
-      justify-content: space-around;
-      width: 100%;
-      // border: 1px solid red;
-    }
-    button {
-      border-style: none;
-      border-radius: 50px;
-      padding: 0.5rem 1rem;
-      background-color: skyblue;
-      cursor: pointer;
-    }
+  &:hover {
+    background-color: crimson;
   }
-  img {
-    width: 7.5rem;
-    height: 7.5rem;
-    border-radius: 50%;
+}
+
+.liked {
+  background-color: goldenrod;
+}
+
+.hidden {
+  display: none;
+}
+
+.no-data {
+  margin-top: 2rem;
+  font-size: 1.5rem;
+  padding: 0 3rem;
+  text-align: center;
+
+  p {
+    margin: 0;
   }
 }
