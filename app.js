@@ -48,7 +48,7 @@ adoptionApp.apiKey = 'PjoCn4l5'
 //     'tortoises',
 //     'turkeys',
 //     'turtles'];
-adoptionApp.ul = document.querySelector('.data-display');   // ??????
+adoptionApp.ul = document.querySelector('.data-display'); 
 
 adoptionApp.getAnimalsName = () => {
     const url = new URL(`https://api.rescuegroups.org/v5/public/animals/species/`);
@@ -123,7 +123,6 @@ adoptionApp.display = (dataFromApi, image) => {
         const exitId = res.attributes.slug
         const li = document.createElement('li')
         adoptionApp.ul.appendChild(li);
-
         if (description !== undefined) {
 
             const pics = image.filter(data => data.id === res.relationships.pictures.data[0].id)
@@ -150,7 +149,7 @@ adoptionApp.display = (dataFromApi, image) => {
 
 };
 
-// take the user selection and change the search peramiter for the api call for the specific animal chosen.
+// take the user selection and change the search paramiter for the api call for the specific animal chosen.
 adoptionApp.userSelection = () => {
     const form = document.querySelector('form');
 
