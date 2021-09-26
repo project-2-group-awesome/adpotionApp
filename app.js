@@ -59,7 +59,7 @@ adoptionApp.getData = (choice) => {
             const images = apiInfo.included.filter((res) => {
                 return res.attributes.large;
             })
-            adoptionApp.display(animalInfo, images);
+            adoptionApp.display(animalInfo, images, choice);
         })
         .catch(err => {
             adoptionApp.errorHandler({ behavior: "smooth" });
@@ -81,7 +81,7 @@ adoptionApp.errorHandler = () => {
 }
 
 // display the data from the api call to the browser
-adoptionApp.display = (dataFromApi, image) => {
+adoptionApp.display = (dataFromApi, image, choice) => {
     const mainElement = document.querySelector('#main');
     const havePic = dataFromApi.filter(data => data.relationships.pictures !== undefined);
     adoptionApp.ul.innerHTML = "";
@@ -94,6 +94,7 @@ adoptionApp.display = (dataFromApi, image) => {
         const li = document.createElement('li')
         adoptionApp.ul.appendChild(li);
 
+
         // Sorting through object if there is no description, we skipped that animal.
         if (description !== undefined) {
             const pics = image.filter(data => data.id === res.relationships.pictures.data[0].id)
@@ -101,7 +102,7 @@ adoptionApp.display = (dataFromApi, image) => {
             li.innerHTML = `
                 <div class="card">
                     <div class="small">
-                        <img src="${pics}" alt=""/>
+                        <img src="${pics}" alt="A cute ${choice} named ${name}"/>
                         <h3>${name}</h3>
                         <div class="btn-container">
                             <button id="${name}">More Info</button>
@@ -128,15 +129,6 @@ adoptionApp.userSelection = () => {
     })
 
 };
-
-// user hover over cards to revile more info
-adoptionApp.userInteraction = () => {
-    const card = document.querySelector('.card');
-
-    card.addEventListener('mouseOver', () => {
-
-    })
-}
 
 // Function for all user interaction with buttons. 
 adoptionApp.userInteraction = (name, tag, exit) => {
