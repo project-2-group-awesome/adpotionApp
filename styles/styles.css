@@ -367,6 +367,9 @@ form {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 label {
@@ -376,6 +379,12 @@ label {
 
 input {
   margin-left: 15px;
+  border-style: none;
+  border-radius: 50px;
+  padding: 0.5rem 1rem;
+  background-color: skyblue;
+  cursor: pointer;
+  margin: 10px;
 }
 
 main {
@@ -578,6 +587,9 @@ footer p {
   }
   form input {
     margin: 0;
+  }
+  form select {
+    margin: 10px 0;
   }
 
   .no-data p {

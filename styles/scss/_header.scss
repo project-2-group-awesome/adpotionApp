@@ -54,6 +54,7 @@ form {
     background-color: rgba(36, 35, 35, 0.8);
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 label {
     color: #fff;
@@ -62,4 +63,10 @@ label {
 
 input {
     margin-left: 15px;
+    border-style: none;
+    border-radius: 50px;
+    padding: 0.5rem 1rem;
+    background-color: skyblue;
+    cursor: pointer;
+    margin: 10px;
 }
